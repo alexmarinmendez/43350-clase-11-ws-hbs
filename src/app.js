@@ -16,6 +16,7 @@ app.use('/', viewsRouter)
 const messages = []
 
 io.on('connection', socket => {
+    socket.broadcast.emit('alerta')
     socket.emit('logs', messages)
     socket.on('message', data => {
         messages.push(data)
